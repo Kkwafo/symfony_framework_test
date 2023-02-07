@@ -1,0 +1,59 @@
+{#Plantilla de nuestra aplicacion#}
+{% extends 'base.html.twig' %}
+{% block title %} Nuestro Equipo {% endblock %}
+{# CONTENIDO #}
+{% block contenido %}
+<div class="container">
+    <h1 class="mt-4 mb-3">Mostachos 
+    <small>Bares</small></h1>
+    {% if sitio=='centro' or sitio=='todos' %}
+
+    <div class="row">
+        <div class="col lg-8 mb-4">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3404.6347902297166!2d-64.18450329602389!3d-31.42418678523837!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9432a2903d1653c7%3A0x435df7d20fbee63a!2sBlvr.%20Chacabuco%20565%2C%20X5000%20C%C3%B3rdoba!5e0!3m2!1ses!2sar!4v1675780136091!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+</div>
+        <div class="col-lg-4 mb-4">
+            <h3> Mostacho del Centro</h3>
+            <p> Chacabuco <br>54845 <br> </p>
+            <p> <abbr title="Phone"> P</abbr>: (351)351351351 </p>
+            <p> <abbr title="Email"> E</abbr>: 
+            <a href="mailto:centro@mail.com"></a> centro@mail.com </p>
+            <p> <abbr title="Hours"> H</abbr>: Monday - Osvaldo 06:00am - 10:00pm </p>
+        </div>
+</div>
+    {% endif %}
+    {% if sitio=='altacba' or sitio=='todos' %}
+
+    <div class="row">
+        <div class="col lg-8 mb-4">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7646.179913203731!2d-64.18670692681846!3d-31.386950513393337!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9432985bda171577%3A0xbd77a4a941d9a2ee!2sMariano%20Fragueiro%2C%20C%C3%B3rdoba!5e0!3m2!1ses-419!2sar!4v1675782076690!5m2!1ses-419!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+        <div class="col-lg-4 mb-4">
+            <h3> Mostacho de Alta cordoba</h3>
+            <p> Fraguerio <br> 215155 <br> </p>
+            <p> <abbr title="Phone"> P</abbr>: (351)513513513 </p>
+            <p> <abbr title="Email"> E</abbr>: 
+            <a href="mailto:alta@mail.com"></a> altacba@mail.com </p>
+            <p> <abbr title="Hours"> H</abbr>: Monday - Osvaldo 06:00am - 10:00pm </p>
+        </div>
+</div>
+    {% endif %}
+    {% if sitio=='cerro' or sitio=='todos' %}
+
+    <div class="row">
+        <div class="col lg-8 mb-4">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4170.23742523557!2d-64.25198244788831!3d-31.361525892217806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94329eb631dbfbc9%3A0x7133514f46714656!2sC0524!5e0!3m2!1ses-419!2sar!4v1675782116156!5m2!1ses-419!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+</div>
+        <div class="col-lg-4 mb-4">
+            <h3> Mostacho del cerro</h3>
+            <p>  La place <br> 154545 <br> </p>
+            <p> <abbr title="Phone"> P</abbr>: (351)351222222 </p>
+            <p> <abbr title="Email"> E</abbr>: 
+            <a href="mailto:centro@mail.com"></a> cerro@mail.com </p>
+            <p> <abbr title="Hours"> H</abbr>: Monday - Osvaldo 06:00am - 10:00pm </p>
+        </div>
+</div>
+    {% endif %}
+{% endblock %}

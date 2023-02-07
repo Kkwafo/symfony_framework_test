@@ -1,0 +1,44 @@
+{#Plantilla de nuestra aplicacion#}
+{% extends 'base.html.twig' %}
+{% block title %} Nuestro Equipo {% endblock %}
+{# CONTENIDO #}
+{% block contenido %}
+            <header class="bg-dark py-5">
+                <div class="container px-5">
+                    <div class="row gx-5 align-items-center justify-content-center">
+                        <div class="col-lg-8 col-xl-7 col-xxl-6">
+                            <div class="my-5 text-center text-xl-start">
+                                <h1 class="display-5 fw-bolder text-white mb-2">ulla fermentum turpis quis nisi tempor</h1>
+                                <p class="lead fw-normal text-white-50 mb-4">Aenean feugiat vel ligula at vestibulum. Nulla fermentum turpis quis nisi tempor lacinia sit amet in eros. Fusce et sem non neque dapibus ornare. Morbi tristique ex nulla, et vestibulum est tincidunt non. Vivamus non imperdiet mauris, vitae egestas mauris. Nulla arcu diam, sagittis dignissim condimentum sed, consectetur at magna. Nulla pellentesque, erat et mollis dapibus, nulla dolor blandit magna, eu congue mi dolor nec velit. </p>
+                                <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
+                                    <a class="btn btn-primary btn-lg px-4 me-sm-5" href="#features">Menu</a>
+                             
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="https://images.squarespace-cdn.com/content/v1/554caae8e4b0cda5a8ad1022/1499651843111-UIK351VLAH7CA1XBZ6PS/image-asset.png?format=1000w" alt="..." /></div>
+                    </div>
+                </div>
+
+            </header>
+            <div class="mt-1 cardNosotros d-flex flex-row container ">
+                <div class="card m-5" style="width: 18rem;">
+                    <img class= "imgcard" src="https://static-sevilla.abc.es/media/gurmesevilla/2012/01/comida-rapida-casera.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">Nullam suscipit tortor nibh, ac tincidunt lectus varius nec. Nullam a sodales quam. Curabitur sit amet bibendum quam. Pellentesque ac luctus magna. Sed et volutpat lectus, vel molestie sem. Quisque vestibulum tempor faucibus. Integer lacinia ante et tellus ullamcorper suscipit. </p>
+                    </div>
+                </div>
+                <div class="card m-5" style="width: 18rem;">
+                <img class= "imgcard" src="https://www.abc.com.py/resizer/fnwjY6sPd6Exx9pHjmdI50kKWu8=/fit-in/770x495/smart/filters:format(webp)/cloudfront-us-east-1.images.arcpublishing.com/abccolor/X456L3EEPBFRPLHQ2ZUZYWNSCA.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">Nullam suscipit tortor nibh, ac tincidunt lectus varius nec. Nullam a sodales quam. Curabitur sit amet bibendum quam. Pellentesque ac luctus magna. Sed et volutpat lectus, vel molestie sem. Quisque vestibulum tempor faucibus. Integer lacinia ante et tellus ullamcorper suscipit. </p>
+                    </div>
+                </div>
+                <div class="card m-5" style="width:18rem;">
+                <img class= "imgcard" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrZrGkAyCz97rt_Oer1uPKJrAEq1gnsEFe1A&usqp=CAU" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">Nullam suscipit tortor nibh, ac tincidunt lectus varius nec. Nullam a sodales quam. Curabitur sit amet bibendum quam. Pellent. </p>
+                    </div>
+                </div>
+            </div>
+{% endblock %}

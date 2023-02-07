@@ -1,0 +1,9 @@
+{#Plantilla de nuestra aplicacion#}
+{% extends 'base.html.twig' %}
+{% block title %} Pagina Principal {% endblock %}
+{# CONTENIDO #}
+{% block contenido %}
+{{ form_start(form) }}
+{{ form_widget(form) }}
+{{ form_end(form) }}
+{% endblock %}
