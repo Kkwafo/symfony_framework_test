@@ -31,35 +31,36 @@ class Menu
     /**
      * @var string
      *
-     * @ORM\Column(name="descripcion", type="text")
+     * @ORM\Column(name="descripcion", type="text", nullable=true)
      */
     private $descripcion;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="ingredientes", type="text")
+     * @ORM\Column(name="ingredientes", type="text", nullable=true)
      */
     private $ingredientes;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="foto", type="string", length=255)
+     * @ORM\Column(name="foto", type="string", length=255, nullable=true)
      */
     private $foto;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fechaCreacion", type="datetime")
+     * @ORM\Column(name="fechaCreacion", type="datetime", nullable=true)
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $fechaCreacion;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="top", type="boolean")
+     * @ORM\Column(name="top", type="boolean", nullable=true)
      */
     private $top;
 

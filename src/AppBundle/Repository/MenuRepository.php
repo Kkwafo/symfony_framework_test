@@ -10,4 +10,5 @@ namespace AppBundle\Repository;
  */
 class MenuRepository extends \Doctrine\ORM\EntityRepository
 {
+    
 }

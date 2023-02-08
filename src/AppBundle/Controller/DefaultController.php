@@ -15,7 +15,7 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
 
-        return $this->render('frontal/index.html.twig', array('menu'=>$menu));
+        return $this->render('frontal/index.html.twig');
     }
 
     /**
