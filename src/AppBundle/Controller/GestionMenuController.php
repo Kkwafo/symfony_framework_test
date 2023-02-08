@@ -21,12 +21,14 @@ class GestionMenuController extends Controller {
         $form = $this->createForm(MenuType::class, $menu);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            
             $menu = $form->getData();
-
+            var_dump($menu);
+            $menu->setFechaCreacion(new \DateTime());
             $em = $this->getDoctrine() -> getManager();
             $em->persist($menu);
             $em->flush($menu);
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('menu', array ('id' =>$menu->getId()));
         }
 
         return $this->render('gestionMenu/nuevoMenu.html.twig', array('form'=> $form->createView()));

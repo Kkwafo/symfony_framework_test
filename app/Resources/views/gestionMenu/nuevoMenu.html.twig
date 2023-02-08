@@ -3,7 +3,44 @@
 {% block title %} Pagina Principal {% endblock %}
 {# CONTENIDO #}
 {% block contenido %}
-{{ form_start(form) }}
-{{ form_widget(form) }}
-{{ form_end(form) }}
+<div class= "container">
+    <h1 class="mt-4 mb-3">Nuevo Menu </h1>
+    <div class="row">
+        <div class="col-md-8 ">
+        {{ form_start(form) }}
+            {{ form_errors(form) }}
+
+            <div class= "form-control m-2">
+                {{ form_label(form.nombre) }}                
+                {{ form_errors(form.nombre) }}                
+                {{ form_widget(form.nombre) }}                
+            </div>
+            <div class= "form-control m-2 ">
+                {{ form_label(form.descripcion) }}
+                {{ form_errors(form.descripcion) }}
+                {{ form_widget(form.descripcion) }}
+            </div>            
+            <div class= "form-control m-2">
+                {{ form_label(form.ingredientes) }}
+                {{ form_errors(form.ingredientes) }}
+                {{ form_widget(form.ingredientes) }}
+            </div>
+            <div class= "form-control m-2">
+                {{ form_label(form.foto) }}
+                {{ form_errors(form.foto) }}
+                {{ form_widget(form.foto) }}
+            </div>
+            <div class= "form-control form-check m-2">
+                {{ form_label(form.top) }}
+                {{ form_errors(form.top) }}
+                {{ form_widget(form.top) }}
+                </div>
+
+        {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block javascripts %} 
+<script type="text/javascript" src="{{asset ('nuevoMenu.js')}}">
 {% endblock %}

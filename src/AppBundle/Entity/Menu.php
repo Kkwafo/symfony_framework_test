@@ -24,35 +24,35 @@ class Menu
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre", type="string", length=255, nullable=true)
+     * @ORM\Column(name="nombre", type="string", length=255)
      */
     private $nombre;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="descripcion", type="text", nullable=true)
+     * @ORM\Column(name="descripcion", type="text")
      */
     private $descripcion;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="ingredientes", type="text", nullable=true)
+     * @ORM\Column(name="ingredientes", type="text")
      */
     private $ingredientes;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="foto", type="string", length=255, nullable=true)
+     * @ORM\Column(name="foto", type="string", length=255)
      */
     private $foto;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fechaCreacion", type="datetime", nullable=true)
+     * @ORM\Column(name="fechaCreacion", type="datetime")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $fechaCreacion;
@@ -60,7 +60,7 @@ class Menu
     /**
      * @var bool
      *
-     * @ORM\Column(name="top", type="boolean", nullable=true)
+     * @ORM\Column(name="top", type="boolean")
      */
     private $top;
 
