@@ -171,4 +171,9 @@ class Categoria
     {
         return $this->menues;
     }
+
+    public function __toString(){
+        return $this->nombre;
+    }
 }
+

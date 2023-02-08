@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use AppBundle\Entity\Menu;
+use AppBundle\Entity\Categoria;
 
 class DefaultController extends Controller
 {
@@ -35,7 +36,7 @@ class DefaultController extends Controller
         return $this->render('frontal/bares.html.twig', array('sitio' => $sitio));
     }
         /**
-     * @Route("/ ", name="home")
+     * @Route("/", name="home")
      */
     public function homeAction(Request $request)
     {
@@ -44,7 +45,7 @@ class DefaultController extends Controller
         return $this->render('frontal/home.html.twig', array('menu'=>$menu));
     }
             /**
-     * @Route("/menu/{id} ", name="menu")
+     * @Route("/menu/{id}", name="menu")
      */
     public function menuAction(Request $request,$id=null )
     {
@@ -57,5 +58,23 @@ class DefaultController extends Controller
     }
        
     }
-    
+    /**
+     * @Route("/categoria/{id}", name="categoria")
+     */
+    public function catAction(Request $request,$id=null )
+    {
+        if($id != null){
+            if (empty($id)){
+
+                return $this->redirectToRoute('home');
+            }
+         
+            $CategoriaRepository = $this->getDoctrine()->getRepository(Categoria::class);
+            $categoria= $CategoriaRepository->find($id);
+            //dump($categoria); die;
+            return $this->render('frontal/categoria.html.twig', array('categoria'=>$categoria));
+        } else {
+            return $this->redirectToRoute('home');
+        }
+    }
 }
