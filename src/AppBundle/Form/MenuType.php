@@ -22,8 +22,7 @@ class MenuType extends AbstractType
         $builder
         ->add('nombre', TextType::class)
         ->add('descripcion', TextareaType::class)
-        ->add('ingredientes', TextareaType::class)
-          
+        ->add('ingredientes', TextareaType::class)          
         ->add('foto', TextType::class, array('label' => 'Foto URL'))         
         ->add('top')
         ->add('Crear', SubmitType::class, array('label' => 'Crear Menu'));
