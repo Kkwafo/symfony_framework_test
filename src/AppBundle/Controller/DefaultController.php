@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use AppBundle\Entity\Menu;
 use AppBundle\Entity\Categoria;
+use AppBundle\Entity\Ingrediente;
 
 class DefaultController extends Controller
 {
@@ -36,12 +37,20 @@ class DefaultController extends Controller
         return $this->render('frontal/bares.html.twig', array('sitio' => $sitio));
     }
         /**
-     * @Route("/", name="home")
+     * @Route("/{pagina}", name="home")
      */
-    public function homeAction(Request $request)
+    public function homeAction(Request $request, $pagina=1)
     {
         $MenuRepository = $this->getDoctrine()->getRepository(Menu::class);
-        $menu = $MenuRepository->findByTop(true);   
+        //$menu = $MenuRepository->findByTop(true);
+        $nummenu=3;
+        $query =  $MenuRepository->createQueryBuilder('t')
+        -> where ('t.top = 0')
+        -> setFirstResult($nummenu*($pagina-1))
+        ->setMaxResults($nummenu)
+        ->getQuery();
+        $menu=$query->getResult();
+
         return $this->render('frontal/home.html.twig', array('menu'=>$menu));
     }
             /**
@@ -77,4 +86,24 @@ class DefaultController extends Controller
             return $this->redirectToRoute('home');
         }
     }
+    /**
+     * @Route("/ingredientes/{id}", name="ingredientes")
+     */
+    public function ingAction(Request $request,$id=null )
+    {
+        if($id != null){
+            if (empty($id)){
+
+                return $this->redirectToRoute('home');
+            }
+         
+            $ingredienteRepository = $this->getDoctrine()->getRepository(Ingrediente::class);
+            $ingredientes= $ingredienteRepository->find($id);
+            //dump($categoria); die;
+            return $this->render('frontal/ingredientes.twig', array('ingredientes'=>$ingredientes));
+        } else {
+            return $this->redirectToRoute('home');
+        }
+    }
+
 }

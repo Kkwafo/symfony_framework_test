@@ -9,8 +9,12 @@ use AppBundle\Form\MenuType;
 use AppBundle\Entity\Menu;
 use AppBundle\Entity\Categoria;
 use AppBundle\Form\CategoriaType;
+use AppBundle\Entity\Ingrediente;
+use AppBundle\Form\IngredientesType;
 
-
+    /**
+     * @Route("/gestion")
+     */
 class GestionMenuController extends Controller {
 
     /**
@@ -60,6 +64,28 @@ class GestionMenuController extends Controller {
     }
 
 
+    /**
+     * @Route("/nuevoIngrediente", name="nuevoIngrediente")
+     */
+
+    public function nuevoIngAction(Request $request){
+   
+        $ingredientes = new Ingrediente();
+
+        $form = $this->createForm(IngredientesType::class, $ingredientes);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            
+            $ingredientes = $form->getData();
+            $em = $this->getDoctrine() -> getManager();
+            $em->persist($ingredientes);
+            $em->flush($ingredientes);
+            return $this->redirectToRoute('ingredientes', array ('id' =>$ingredientes->getId()));
+        }
+
+        return $this->render('gestionMenu/nuevoIngrediente.twig', array('form'=> $form->createView()));
+
+    }
     
 }
 ?>

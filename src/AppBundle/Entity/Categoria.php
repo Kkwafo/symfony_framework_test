@@ -176,4 +176,3 @@ class Categoria
         return $this->nombre;
     }
 }
-

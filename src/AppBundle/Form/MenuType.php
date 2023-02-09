@@ -23,7 +23,7 @@ class MenuType extends AbstractType
         $builder
         ->add('nombre', TextType::class, array('attr' => array('class' => $input)))
         ->add('descripcion', TextareaType::class, array('attr' => array('class' => $input)))
-        ->add('ingredientes', TextareaType::class, array('attr' => array('class' => $input)))  
+        ->add('ingredientes', EntityType::class, array('class' => 'AppBundle:Ingrediente', 'multiple' => 'true'))  
         ->add('categoria', EntityType::class, array('class' => 'AppBundle:Categoria'))    
         ->add('foto', TextType::class, array('label' => 'Foto URL'))         
         ->add('top')        

@@ -4,26 +4,15 @@
 {# CONTENIDO #}
 {% block contenido %}
 <div class= "container">
-    <h1 class="mt-4 mb-3">Nueva Categoria </h1>
+    <h1 class="mt-4 mb-3">Nuevo Ingrediente </h1>
     <div class="row">
         <div class="col-md-8 ">
         {{ form_start(form) }}
             {{ form_errors(form) }}
 
-        
                 {{ form_label(form.nombre) }}                
                 {{ form_errors(form.nombre) }}                
                 {{ form_widget(form.nombre) }}                
-   
-                {{ form_label(form.descripcion) }}
-                {{ form_errors(form.descripcion) }}
-                {{ form_widget(form.descripcion) }}
-
-                {{ form_label(form.foto) }}
-                {{ form_errors(form.foto) }}
-                {{ form_widget(form.foto) }}
-   
-
 
         {{ form_end(form) }}
         </div>

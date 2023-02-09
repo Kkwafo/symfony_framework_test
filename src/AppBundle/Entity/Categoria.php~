@@ -137,5 +137,42 @@ class Categoria
     {
         return $this->foto;
     }
-}
 
+    /**
+     * Add menue
+     *
+     * @param \AppBundle\Entity\Menu $menue
+     *
+     * @return Categoria
+     */
+    public function addMenue(\AppBundle\Entity\Menu $menue)
+    {
+        $this->menues[] = $menue;
+
+        return $this;
+    }
+
+    /**
+     * Remove menue
+     *
+     * @param \AppBundle\Entity\Menu $menue
+     */
+    public function removeMenue(\AppBundle\Entity\Menu $menue)
+    {
+        $this->menues->removeElement($menue);
+    }
+
+    /**
+     * Get menues
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMenues()
+    {
+        return $this->menues;
+    }
+
+    public function __toString(){
+        return $this->nombre;
+    }
+}

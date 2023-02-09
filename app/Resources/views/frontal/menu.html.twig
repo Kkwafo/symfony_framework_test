@@ -22,7 +22,9 @@
                             <div class="text-center mb-5">
                             <ul>
                             <h3> Ingredientes</h3>
-                                <li>{{menu.ingredientes}}</li>
+                            {% for ingredientes in menu.ingredientes %}
+                             <li>{{ingredientes}}</li>
+                            {% endfor %}
                             </ul>
                             </div>
                         </div>
