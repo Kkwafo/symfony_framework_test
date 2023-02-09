@@ -19,15 +19,16 @@ class MenuType extends AbstractType
     {
         $input = "form-control mb-2";
         $button = "btn btn-dark mb-2";
+        $select = "form-select";
         
         $builder
         ->add('nombre', TextType::class, array('attr' => array('class' => $input)))
         ->add('descripcion', TextareaType::class, array('attr' => array('class' => $input)))
         ->add('ingredientes', EntityType::class, array('class' => 'AppBundle:Ingrediente', 'multiple' => 'true'))  
         ->add('categoria', EntityType::class, array('class' => 'AppBundle:Categoria'))    
-        ->add('foto', TextType::class, array('label' => 'Foto URL'))         
+        ->add('foto', TextType::class, array('label' => 'Foto URL', 'attr' => array ('class' => $input)) )        
         ->add('top')        
-        ->add('Crear', SubmitType::class,array('attr' => array('class' => $button )));
+        ->add('Crear', SubmitType::class,array('attr' => array('class' => $button , 'label' => 'Agregar Menu')));
         
     }
 }

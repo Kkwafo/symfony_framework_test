@@ -23,8 +23,8 @@ class UserType extends AbstractType
         ->add('username', TextType::class, array('attr' => array('class' => $input)))
         ->add('plainPassword', RepeatedType::class, array(
             'type' => PasswordType::class,
-            'first_options'  => array('label' => 'Password'),
-            'second_options' => array('label' => 'Repeat Password'),
+            'first_options'  => array('label' => 'Password', 'attr' => array ('class' => $input)),
+            'second_options' => array('label' => 'Repeat Password', 'attr' => array ('class' => $input)),
         ))
         ->add('Registrar', SubmitType::class,array('attr' => array('class' => $button )));
     ;}

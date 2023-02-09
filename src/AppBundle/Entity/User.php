@@ -12,8 +12,11 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
- * @ORM\UniqueEntity(fields="email", message="Email already taken")
- * @ORM\UniqueEntity(fields="username", message="Username already taken")
+ */
+/**
+ * @ORM\Entity
+ * @UniqueEntity(fields="email", message="Email already taken")
+ * @UniqueEntity(fields="username", message="Username already taken")
  */
 class User implements UserInterface, \Serializable
 {
@@ -146,19 +149,19 @@ class User implements UserInterface, \Serializable
         return $this;
     }
 
-    // /**
-    //  * Set password
-    //  *
-    //  * @param string $password
-    //  *
-    //  * @return User
-    //  */
-    // public function setPassword($password)
-    // {
-    //     $this->password = $password;
+    /**
+     * Set password
+     *
+     * @param string $password
+     *
+     * @return User
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
 
-    //     return $this;
-    // }
+        return $this;
+    }
 
     /**
      * Set email

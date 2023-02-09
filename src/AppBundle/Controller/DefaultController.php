@@ -6,11 +6,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use AppBundle\Entity\Menu;
 use AppBundle\Entity\Categoria;
 use AppBundle\Entity\Ingrediente;
 use AppBundle\Entity\User;
 use AppBundle\Form\UserType;
+
 
 class DefaultController extends Controller
 {
@@ -111,11 +113,33 @@ class DefaultController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-            return $this->redirectToRoute('replace_with_some_route');
+            return $this->redirectToRoute('login');
             }
             
             return $this->render('frontal/registro.html.twig',array('form' => $form->createView()));
     }
+
+
+    /**
+         * @Route("/login", name="login")
+         */
+
+        public function loginAction(Request $request, AuthenticationUtils $authenticationUtils)
+         { 
+               $authenticationUtils = $this->get('security.authentication_utils');
+
+            // get the login error if there is one
+            $error = $authenticationUtils->getLastAuthenticationError();
+
+            // last username entered by the user
+            $lastUsername = $authenticationUtils->getLastUsername();
+
+            return $this->render('frontal/login.html.twig', [
+                'last_username' => $lastUsername,
+                'error'         => $error,
+                ]);
+        }
+
 
      /**
      * @Route("/{pagina}", name="home")
