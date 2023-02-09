@@ -12,7 +12,7 @@ use AppBundle\Entity\Ingrediente;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/home", name="homepage")
+     * @Route("/index", name="homepage")
      */
     public function indexAction(Request $request)
     {
@@ -28,7 +28,7 @@ class DefaultController extends Controller
         
         return $this->render('frontal/nosotros.html.twig');
     }
-        /**
+     /**
      * @Route("contactar/{sitio}", name="contactar")
      */
     public function contactarAction(Request $request,$sitio="todos")
@@ -36,24 +36,19 @@ class DefaultController extends Controller
         
         return $this->render('frontal/bares.html.twig', array('sitio' => $sitio));
     }
-        /**
-     * @Route("/{pagina}", name="home")
+     /**
+     * @Route("{pagina}", name="home")
      */
     public function homeAction(Request $request, $pagina=1)
     {
         $MenuRepository = $this->getDoctrine()->getRepository(Menu::class);
         //$menu = $MenuRepository->findByTop(true);
-        $nummenu=3;
-        $query =  $MenuRepository->createQueryBuilder('t')
-        -> where ('t.top = 0')
-        -> setFirstResult($nummenu*($pagina-1))
-        ->setMaxResults($nummenu)
-        ->getQuery();
-        $menu=$query->getResult();
+  
+        $menu=$MenuRepository->paginaActual($pagina);
 
-        return $this->render('frontal/home.html.twig', array('menu'=>$menu));
+        return $this->render('frontal/home.html.twig', array('menu'=>$menu, 'paginaActual'=>$pagina));
     }
-            /**
+     /**
      * @Route("/menu/{id}", name="menu")
      */
     public function menuAction(Request $request,$id=null )

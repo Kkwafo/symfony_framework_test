@@ -10,5 +10,12 @@ namespace AppBundle\Repository;
  */
 class MenuRepository extends \Doctrine\ORM\EntityRepository
 {
-    
+    public function paginaActual($nummenu=3, $pagina=1){
+        $query =  $this->createQueryBuilder('t')
+        -> where ('t.top = 1')
+        -> setFirstResult($nummenu*($pagina-1))
+        ->setMaxResults($nummenu)
+        ->getQuery();
+        return $query->getResult();
+    }
 }
