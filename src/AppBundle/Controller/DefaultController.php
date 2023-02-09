@@ -5,9 +5,12 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use AppBundle\Entity\Menu;
 use AppBundle\Entity\Categoria;
 use AppBundle\Entity\Ingrediente;
+use AppBundle\Entity\User;
+use AppBundle\Form\UserType;
 
 class DefaultController extends Controller
 {
@@ -36,18 +39,7 @@ class DefaultController extends Controller
         
         return $this->render('frontal/bares.html.twig', array('sitio' => $sitio));
     }
-     /**
-     * @Route("{pagina}", name="home")
-     */
-    public function homeAction(Request $request, $pagina=1)
-    {
-        $MenuRepository = $this->getDoctrine()->getRepository(Menu::class);
-        //$menu = $MenuRepository->findByTop(true);
-  
-        $menu=$MenuRepository->paginaActual($pagina);
 
-        return $this->render('frontal/home.html.twig', array('menu'=>$menu, 'paginaActual'=>$pagina));
-    }
      /**
      * @Route("/menu/{id}", name="menu")
      */
@@ -101,4 +93,40 @@ class DefaultController extends Controller
         }
     }
 
+
+    /**
+     * @Route("/registro", name="registro")
+     */
+    public function registroAction(Request $request){
+   
+        $user = new User();
+
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            
+            $user = $form->getData();
+            $password = $this->get('security.password_encoder')->encodePassword($user, $user->getPlainPassword());
+            $user->setPassword($password);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+            return $this->redirectToRoute('replace_with_some_route');
+            }
+            
+            return $this->render('frontal/registro.html.twig',array('form' => $form->createView()));
+    }
+
+     /**
+     * @Route("/{pagina}", name="home")
+     */
+    public function homeAction(Request $request, $pagina=1)
+    {
+        $MenuRepository = $this->getDoctrine()->getRepository(Menu::class);
+        
+        //le paso como argumento la cantidad que quiero que muestre y el default del valor pagina.
+        $menu=$MenuRepository->paginaActual($nummenu=3,$pagina);
+
+        return $this->render('frontal/home.html.twig', array('menu'=>$menu, 'paginaActual'=>$pagina));
+    }
 }

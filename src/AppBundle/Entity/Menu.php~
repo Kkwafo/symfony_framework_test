@@ -272,4 +272,14 @@ class Menu
     {
         $this->ingredientes->removeElement($ingrediente);
     }
+
+    /**
+     * Get ingredientes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getIngredientes()
+    {
+        return $this->ingredientes;
+    }
 }
